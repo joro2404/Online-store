@@ -1,3 +1,6 @@
 **/*.pyc
+database.pyc
+user.pyc
+main.pyc
 .vscode
 __pycache__
