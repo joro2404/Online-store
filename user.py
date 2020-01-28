@@ -11,18 +11,21 @@ from itsdangerous import (
 SECRET_KEY = 'ncXZyx5cLR7x1$B^Ybtqp1f!E#dG4H3EN@ioYYKoxx'
 
 class User:
-    def __init__(self, id, username, password):
+    def __init__(self, id, username, password, email, number, address):
         self.id = id
         self.username = username
         self.password = password
+        self.email = email
+        self.number = number
+        self.address = address
 
 
     def create(self):
         with DB() as db:
-            values = (self.username, self.password)
+            values = (self.username, self.password, self.email, self.number, self.address)
             db.execute('''
-                INSERT INTO users (username, password)
-                VALUES (?, ?)''', values)
+                INSERT INTO users (username, password, email, number, address)
+                VALUES (?, ?, ?, ?, ?)''', values)
             return self
 
 
@@ -61,6 +64,3 @@ class User:
         except BadSignature:
             return False
         return True
-
-
-

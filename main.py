@@ -18,11 +18,14 @@ def register():
         values = (
             None,
             request.form['username'],
-            User.hash_password(request.form['password'])
+            User.hash_password(request.form['password']),
+            request.form['email'],
+            request.form['number'],
+            request.form['address']
         )
         User(*values).create()
 
-        return redirect('/')
+        return redirect('/login')
 
 
 @app.route('/login', methods=["GET", "POST"])
