@@ -10,7 +10,7 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register.html', methods=['GET', 'POST'])
 def register():
     if request.method == 'GET':
         return render_template('register.html')
@@ -25,7 +25,7 @@ def register():
         return redirect('/')
 
 
-@app.route('/login', methods=["GET", "POST"])
+@app.route('/login.html', methods=["GET", "POST"])
 def login():
     if request.method == 'GET':
         return render_template('login.html')
