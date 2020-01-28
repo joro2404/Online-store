@@ -64,3 +64,6 @@ class User:
         except BadSignature:
             return False
         return True
+
+    #@staticmethod
+    #def add_new_adverisement(self, name, de)

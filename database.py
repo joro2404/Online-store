@@ -16,6 +16,20 @@ CREATE TABLE IF NOT EXISTS users
     )
 ''')
 
+conn.cursor().execute('''
+CREATE TABLE IF NOT EXISTS advertisements
+    (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        seller_id INTEGER NOT NULL,
+        name TEXT NOT NULL,
+        description TEXT,
+        price REAL NOT NULL,
+        release_date TEXT NOT NULL,
+        is_available INTEGER,
+        FOREIGN KEY (seller_id) REFERENCES users(id)
+    )
+''')
+
 conn.commit()
 
 class DB:
