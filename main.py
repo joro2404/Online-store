@@ -1,10 +1,13 @@
 from flask import Flask
-from flask import render_template, request, redirect, url_for, jsonify
+from flask import render_template, request, redirect, url_for, jsonify, flash
 import json
+import sqlite3
+from sqlite3 import IntegrityError
 
 from user import User
 
 app = Flask(__name__)
+app.secret_key = '\xfd{H\xe5<\x95\xf9\xe3\x96.5\xd1\x01O<!\xd5\xa2\xa0\x9fR"\xa1\xa8'
 
 @app.route('/')
 def home():
@@ -23,9 +26,12 @@ def register():
             request.form['number'],
             request.form['address']
         )
-        User(*values).create()
-
-        return redirect('/login')
+        try:
+            User(*values).create()
+            return redirect('/login')
+        except sqlite3.IntegrityError as e:
+            flash("Email or username are already in use!")
+            return(redirect('/register'))
 
 
 @app.route('/login', methods=["GET", "POST"])

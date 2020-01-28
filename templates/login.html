@@ -22,7 +22,8 @@
               document.cookie = 'token=' + token + ';';
               document.location = '/';
             } else {
-              alert('No can do');
+              alert('Username or password is incorrect!');
+              document.location = '/login';
             }
       
           }
