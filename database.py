@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS advertisements
         seller_id INTEGER NOT NULL,
         name TEXT NOT NULL,
         description TEXT,
-        price REAL NOT NULL,
+        price TEXT NOT NULL,
         release_date TEXT NOT NULL,
         is_available INTEGER,
         FOREIGN KEY (seller_id) REFERENCES users(id)
