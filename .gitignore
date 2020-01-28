@@ -1,3 +1,4 @@
+**/*.pyc
 database.pyc
 user.pyc
 main.pyc
