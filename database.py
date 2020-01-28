@@ -1,6 +1,6 @@
 import sqlite3
 
-DB_NAME = 'store.db'
+DB_NAME = 'store2.db'
 
 conn = sqlite3.connect(DB_NAME)
 
