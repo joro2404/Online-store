@@ -10,7 +10,7 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/register.html', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'GET':
         return render_template('register.html')
@@ -25,18 +25,20 @@ def register():
         return redirect('/')
 
 
-@app.route('/login.html', methods=["GET", "POST"])
+@app.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == 'GET':
         return render_template('login.html')
     elif request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+        data = json.loads(request.data.decode('ascii'))
+        username = data['username']
+        password = data['password']
         user = User.find_by_username(username)
         if not user or not user.verify_password(password):
-            return None
+            return jsonify({'token': None})
         token = user.generate_token()
         return jsonify({'token': token.decode('ascii')})
+
 
 
 if __name__ == '__main__':
