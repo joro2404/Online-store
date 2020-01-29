@@ -49,6 +49,12 @@ class Advertisement:
             if row:
                 return Advertisement(*row)
 
+    def save(self):
+        with DB() as db:
+            values = (self.name, self.description, self.price, self.id)
+            db.execute('''UPDATE advertisements SET name = ?, description = ?, price = ? WHERE id = ?''', values)
+            return self
+
     def delete(self):
         with DB() as db:
             db.execute('DELETE FROM advertisements WHERE id = ?', (self.id))
