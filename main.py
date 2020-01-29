@@ -38,9 +38,11 @@ def create_ad():
     if request.method == 'GET':
         return render_template('create_ad.html')
     elif request.method == 'POST':
+        name = json.request.get("username", None)
+        current_user = find_by_username(name)
         values = (
             None,
-            10,
+            current_user.id,
             request.form['name'],
             request.form['description'],
             request.form['price'],
@@ -76,16 +78,18 @@ def login():
     if request.method == 'GET':
         return render_template('login.html')
     elif request.method == 'POST':
-        data = json.loads(request.data.decode('ascii'))
-        username = data['username']
-        password = data['password']
-        session['username'] = username
-        user = User.find_by_username(username)
-        if not user or not user.verify_password(password):
-            return jsonify({'token': None})
-        token = user.generate_token()
-        return jsonify({'token': token.decode('ascii')})
-
+        try:
+            data = json.loads(request.data.decode('ascii'))
+            username = data['username']
+            password = data['password']
+            session['username'] = username
+            user = User.find_by_username(username)
+            if not user or not user.verify_password(password):
+                return jsonify({'token': None})
+            token = user.generate_token()
+            return jsonify({'token': token.decode('ascii')})
+        except:
+            print ("non fukin sense")
 
 
 if __name__ == '__main__':
