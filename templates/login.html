@@ -20,7 +20,7 @@
             var token = JSON.parse(request.responseText).token;
             if (token != null) {
               document.cookie = 'token=' + token + ';';
-              document.location = '/';
+              document.location = '/ads';
             } else {
               alert('Username or password is incorrect!');
               document.location = '/login';
@@ -50,7 +50,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+                    <li><a href="ads"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
                     <li><a href="ads">
                         <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Advertisments</a></li>
                         <li><a href="create_ad">
