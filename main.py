@@ -25,18 +25,20 @@ def require_login(func):
 
 @app.route('/')
 def home():
-    return render_template('index.html', session=session)
+    if session.get('username'):
+        session.pop('username', None)
+    return redirect('/ads')
 
 
 @app.route('/ads')
 def ads():
-    return render_template('ads.html', advertisements=Advertisement.all())
+    return render_template('ads.html', advertisements=Advertisement.all(), session=session)
 
 @app.route('/create_ad', methods=['GET', 'POST'])
 @require_login
 def create_ad():
     if request.method == 'GET':
-        return render_template('create_ad.html')
+        return render_template('create_ad.html', session=session)
     elif request.method == 'POST':
         values = (
             None,
