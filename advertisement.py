@@ -1,7 +1,7 @@
 from database import DB
 
 class Advertisement:
-    def __init__(self, seller_id, id, name, description, price, release_date):
+    def __init__(self, id, seller_id, name, description, price, release_date):
         self.id = id
         self.seller_id = seller_id
         self.name = name
