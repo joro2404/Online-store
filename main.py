@@ -25,7 +25,9 @@ def require_login(func):
 
 @app.route('/')
 def home():
-    return render_template('index.html', session=session)
+    if session.get('username') :
+        session.pop('username', None)
+    return redirect('/ads')
 
 
 @app.route('/ads')
@@ -38,9 +40,10 @@ def create_ad():
     if request.method == 'GET':
         return render_template('create_ad.html')
     elif request.method == 'POST':
+        seller = User.find_by_username(session.get('username'))
         values = (
             None,
-            10,
+            seller.id,
             request.form['name'],
             request.form['description'],
             request.form['price'],
@@ -49,6 +52,24 @@ def create_ad():
         )
         Advertisement(*values).create()
         return redirect('/ads')
+
+@app.route('/my_ads')
+@require_login
+def my_ads():
+    seller = User.find_by_username(session.get('username'))
+    return render_template('my_ads.html', ads=Advertisement.get_by_seller_id(seller.id))
+
+@app.route('/my_ads/<int:id>')
+def view_ad(id):
+    ad = Advertisement.find(id)
+    return render_template('ad.html', ad=ad) #ad.html to be added
+
+@app.route('/my_ads/<int:id>/delete', methods=['POST'])
+def delete_ad(id):
+    ad = Advertisement.find(id)
+    ad.delete()        
+
+    return redirect('/my_ads')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

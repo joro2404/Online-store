@@ -25,6 +25,17 @@ class Advertisement:
                 VALUES (?, ?, ?, ?, ?, ?)''', values)
             return self
 
+    @staticmethod
+    def find(id):
+        with DB() as db:
+            row = db.execute('SELECT * FROM advertisements WHERE id = ?',(id,)).fetchone()
+            return Advertisement(*row)
+
+    @staticmethod
+    def get_by_seller_id(seller_id):
+        with DB() as db:
+            rows = db.execute('SELECT * FROM advertisements WHERE seller_id = ?', (seller_id,)).fetchall()
+            return [Advertisement(*row) for row in rows]
 
     @staticmethod
     def find_by_name(name):
@@ -37,3 +48,7 @@ class Advertisement:
             ).fetchone()
             if row:
                 return Advertisement(*row)
+
+    def delete(self):
+        with DB() as db:
+            db.execute('DELETE FROM advertisements WHERE id = ?', (self.id))

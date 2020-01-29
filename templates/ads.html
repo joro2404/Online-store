@@ -26,21 +26,29 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+                    <li><a href="ads"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
                     <li><a href="ads">
                         <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>Advertisements</a></li>
                         <li><a href="create_ad">
                             <span class="active" aria-hidden="true"></span>Create advertisement</a></li>
 
-                    <li><a href="#"><span class="fa fa-envelope-o"></span> Contact</a></li>
+                            <li><a href="my_ads"><span class="fa fa-envelope-o"></span> My Advertisements</a></li>
 
 
 
                 </ul>
                <ul class="nav navbar-nav navbar-right">
-                   <li><a href = "login" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> login</a></li>
-                   <li><a href = "register" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> register</a></li>
-                </ul>
+                {% if session['username'] %}
+                    <div style="text-align: center;margin: 10px;">
+                        <li style="color: white;">Hi, {{ session.get('username') }}</li>
+                    </div>
+                {% else %}
+                {% block content %}
+                    <li><a href = "login" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
+                    <li><a href = "register" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
+                {% endblock content %}
+                {% endif %}
+              </ul>
             </div>
         </div>
    </nav>
