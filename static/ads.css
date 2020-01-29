@@ -100,27 +100,8 @@
 	background: #109177;
 }
 
-.ad-list {
-	display: flex;
-	text-align: center;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
-.modal-content {
-
-	max-width: 500px;
-	width: auto;
-	display: flex;
-  flex-direction: column;
-  margin: 20 auto;
-	position: relative;
-	border: 10px solid #354b48;
-}
-
-.ad-wrapper > h5{
+.ad-wrapper > h5 {
 	max-width: 20px;
 	flex-wrap: wrap;
 	align-self: center;
@@ -139,14 +120,92 @@
 	left:50%;
 }
 
-.space{
-
-}
 
 .list-group-item {
 	margin: 15px !important;
 }
 
-.badge {
-	margin-bottom: 10px;
+.modal-content {
+	max-width: 500px;
+	width: auto;
+	display: flex;
+  flex-direction: column;
+  margin: 20 auto;
+	position: relative;
+	border: 10px solid #354b48;
+}
+
+.ad-header {
+	margin-bottom: 20px;
+}
+
+.ad-list {
+	display: flex;
+	text-align: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ad-wrapper {
+	margin: 0px;
+	max-width: 200px;
+	max-width: 300px;
+	/*border: 3px solid rgba(0, 0, 0, 0.6);
+	border-radius: 2px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.35), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  */
+	width: 100%;
+  height: 100%;
+	border-top: 2px solid rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.ad-wrapper:first-child{
+	margin-top: 35px;
+}
+
+.ad-footer {
+	float: right;
+	margin: 10px auto 5px auto;
+	padding: 0px;
+	border: 1px solid rgba(0, 0, 0, 0.25);
+	color: rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+	max-width: 100px;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.25);
+}
+
+.release {
+	color: white;
+	margin: 0px;
+	padding: 0px;
+	font-style: oblique;
+	font-size: 12px;
+	border-radius: 10px;
+	background-color: transparent;
+	max-width: 100px;
+	width: 100%;
+}
+
+.ad-seller {
+	font-style: italic;
+	font-size: 15px;
+}
+
+hr {
+	margin: 10px;
+	width: 100%;
+	border-top: 2px solid rgba(0, 0, 0, 0.35);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.space {
+	width:100%;
+	display: block;
+	clear:both;
+	height: 30px;
 }
