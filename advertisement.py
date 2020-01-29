@@ -1,14 +1,14 @@
 from database import DB
 
 class Advertisement:
-    def __init__(self, id, seller_id, name, description, price, release_date):
+    def __init__(self, id, seller_id, name, description, price, release_date, is_available):
         self.id = id
         self.seller_id = seller_id
         self.name = name
         self.description = description
         self.price = price
         self.release_date = release_date
-        self.is_available = 1
+        self.is_available = is_available
 
 
     @staticmethod

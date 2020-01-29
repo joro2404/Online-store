@@ -1,6 +1,6 @@
 from functools import wraps
 from flask import Flask
-from flask import render_template, request, redirect, url_for, jsonify, flash
+from flask import render_template, request, redirect, url_for, jsonify, flash, session
 import json
 import sqlite3
 from sqlite3 import IntegrityError
@@ -25,7 +25,7 @@ def require_login(func):
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.html', session=session)
 
 
 @app.route('/ads')
@@ -44,7 +44,8 @@ def create_ad():
             request.form['name'],
             request.form['description'],
             request.form['price'],
-            date.today()
+            date.today(),
+            1
         )
         Advertisement(*values).create()
         return redirect('/ads')
@@ -78,6 +79,7 @@ def login():
         data = json.loads(request.data.decode('ascii'))
         username = data['username']
         password = data['password']
+        session['username'] = username
         user = User.find_by_username(username)
         if not user or not user.verify_password(password):
             return jsonify({'token': None})
