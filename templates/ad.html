@@ -55,7 +55,7 @@
         <div class="ad-body">
           <h4 class="ad-title"> {{ ad.price }} lv</h4>
           <p class="ad-text"> {{ ad.description }} </p>
-          <h4 class="ad-seller"> offered by {{ ad.seller_id }} </h4>
+          <h4 class="ad-seller"> offered by {{ ad.get_seller_name(ad.seller_id) }} </h4>
           <a  class="details-button">View Details</a>
         </div>
           <div class="ad-footer">

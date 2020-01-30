@@ -29,7 +29,7 @@
                         <li><a href="create_ad">
                             <span class="active" aria-hidden="true"></span> Create advertisment</a></li>
 
-                            <li><a href="my_sold_ads"><span class="fa fa-envelope-o"></span> My Advertisements</a></li>
+                            <li><a href="my_sold_ads"><span class="fa fa-envelope-o"></span> My Sold Advertisements</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if session['username'] %}
@@ -47,18 +47,18 @@
         </div>
    </nav>
 
-   <form action="create_ad", method="post" style="margin: 350px;"> 
+   <form action="/my_ads/{{ ad.id }}/edit", method="post" style="margin: 350px;"> 
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Name of the product</label>
-            <textarea name="name" class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+            <textarea name="name" class="form-control" id="exampleFormControlTextarea1" rows="1">{{ ad.name }}</textarea>
         </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Description of the product</label>
-            <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ ad.description }}</textarea>
         </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Price of the product</label>
-            <textarea name="price" class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+            <textarea name="price" class="form-control" id="exampleFormControlTextarea1" rows="1">{{ ad.price }}</textarea>
             <button type="submit" class="btn btn-primary" >Submit</button>
         </div>
 

@@ -49,7 +49,7 @@
 
    <div class="ad-list">
      {% for ad in ads %}
-      {%if ad.is_available == 1 %}
+        {%if ad.is_available == 0 %}
        <div class="ad-wrapper">
           <div class="ad-header">
             <h2>
@@ -60,11 +60,14 @@
             <h4 class="ad-title"> {{ ad.price }} lv</h4>
             <p class="ad-text"> {{ ad.description }} </p>
             
-              <h4 class="ad-availability"> is currenly available </h4>
-
-            <a href="my_ads/{{ ad.id }}/edit" class="edit-button"><span class="glyphicon glyphicon-pencil"></span>Edit ad</a>
-            <a href="my_ads/{{ ad.id }}/delete" class="delete-button"><span class="glyphicon glyphicon-trash"></span><span class="glyphicon glyphicon-log-in"></span>Delete ad</a>
-          </div>
+                <h4 class="ad-availability">Sold</h4>
+                  <div class="buyer-info">
+                    <h4 class="buyer-name">Buyer: {{ ad.get_buyer_info(ad.buyer_id).username }}</h4>
+                    <h4 class="buyer-phone">address:  {{ ad.get_buyer_info(ad.buyer_id).address }}</h4>
+                    <h4 class="buyer-address">telephone:  {{ ad.get_buyer_info(ad.buyer_id).number }}</h4>
+                  </div>
+            
+            </div>
             <div class="ad-footer">
               <p class="release">
                 {{ ad.release_date }}
