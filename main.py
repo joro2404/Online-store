@@ -44,6 +44,7 @@ def create_ad():
         values = (
             None,
             seller.id,
+            None,
             request.form['name'],
             request.form['description'],
             request.form['price'],
@@ -82,6 +83,11 @@ def delete_ad(id):
     ad.delete()        
 
     return redirect('/my_ads')
+
+@app.route('/ads/<int:id>/buyer')
+def buy_ad(id):
+    ad = Advertisement.find(id)
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

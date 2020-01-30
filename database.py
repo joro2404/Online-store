@@ -1,6 +1,6 @@
 import sqlite3
 
-DB_NAME = 'store2.db'
+DB_NAME = 'store5.db'
 
 conn = sqlite3.connect(DB_NAME)
 
@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS advertisements
     (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         seller_id INTEGER NOT NULL,
+        buyer_id INTEGER,
         name TEXT NOT NULL,
         description TEXT,
         price TEXT NOT NULL,
