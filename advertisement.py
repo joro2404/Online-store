@@ -31,7 +31,7 @@ class Advertisement:
     def get_seller_name(seller_id):
         with DB() as db:
             seller_name = db.execute('SELECT username FROM users WHERE id = ?', (seller_id,)).fetchone()
-            return int("".join(map(str, seller_name)))
+            return "".join(map(str, seller_name))
 
     @staticmethod
     def find(id):
