@@ -64,6 +64,18 @@ def view_ad(id):
     ad = Advertisement.find(id)
     return render_template('ad.html', ad=ad) #ad.html to be added
 
+@app.route('/my_ads/<int:id>/edit', methods=['GET', 'POST'])
+def edit_ad(id):
+    ad = Advertisement.find(id)
+    if request.method == 'GET':
+        return render_template('edit_post.html',post=post,categories=Category.all())
+    elif request.method == 'POST':
+        ad.name = request.form['name']
+        ad.description = request.form['description']
+        ad.price = request.form['price']
+        ad.save()
+        return redirect(url_for('view_ad', id=ad.id))
+
 @app.route('/my_ads/<int:id>/delete', methods=['POST'])
 def delete_ad(id):
     ad = Advertisement.find(id)
