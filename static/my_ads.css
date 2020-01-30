@@ -135,6 +135,9 @@
 	border: 10px solid #354b48;
 }
 
+.ad-header {
+	margin-bottom: 20px;
+}
 
 .ad-list {
 	display: flex;
@@ -142,11 +145,6 @@
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
-}
-
-
-.ad-header {
-	margin-bottom: 20px;
 }
 
 .ad-wrapper {
@@ -168,7 +166,7 @@
 }
 
 .ad-footer {
-	float: right;
+	float: center;
 	margin: 10px auto 5px auto;
 	padding: 0px;
 	border: 1px solid rgba(0, 0, 0, 0.25);
@@ -210,4 +208,37 @@ hr {
 	display: block;
 	clear:both;
 	height: 30px;
+}
+
+.ad-body > a {
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  margin: 0px;
+  padding: 0px;
+  font-style: oblique;
+  font-size: 12px;
+}
+
+.ad-body > a:hover {
+  opacity: 1;
+  transition: 1.5s;
+  transform: scale(1.15);
+  font-weight:bold;
+  color: white;
+}
+
+.edit-button {
+  border: 2px solid rgba(235, 145, 52, 0.9);
+  background-color: rgba(235, 145, 52, 0.9);
+  display: inline;
+  float: left;
+}
+
+
+.delete-button {
+  border: 2px solid rgba(189, 9, 9, 0.8);
+  background-color: rgba(189, 9, 9, 0.8);
+  display: inline;
+  float: right;
 }
