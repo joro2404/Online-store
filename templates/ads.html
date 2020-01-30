@@ -41,11 +41,12 @@
                 {% if session['username'] %}
                     <div style="text-align: center;margin: 10px;">
                         <li style="color: white;">Hi, {{ session.get('username') }}</li>
+                        <li><a href = "logout" ><span class="glyphicon glyphicon-log-in"></span>log out</a></li>
                     </div>
                 {% else %}
                 {% block content %}
-                  <li><a href = "login" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> login</a></li>
-                  <li><a href = "register" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> register</a></li>
+                  <li><a href = "login" ><span class="glyphicon glyphicon-log-in"></span> login</a></li>
+                  <li><a href = "register" ><span class="glyphicon glyphicon-log-in"></span> register</a></li>
                 {% endblock content %}
                 {% endif %}
               </ul>

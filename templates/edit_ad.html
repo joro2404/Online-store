@@ -35,6 +35,7 @@
                     {% if session['username'] %}
                     <div style="text-align: center;margin: 10px;">
                         <li style="color: white;">Hi, {{ session.get('username') }}</li>
+                        <li><a href="logout"><span class="fa fa-envelope-o"></span>logout</a></li>
                     </div>
                 {% else %}
                 {% block content %}

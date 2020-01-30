@@ -1,6 +1,6 @@
 from functools import wraps
 from flask import Flask
-from flask import render_template, request, redirect, url_for, jsonify, flash, session
+from flask import render_template, request, redirect, url_for, jsonify, flash, session, make_response
 import json
 import sqlite3
 from sqlite3 import IntegrityError
@@ -26,8 +26,6 @@ def require_login(func):
 
 @app.route('/')
 def home():
-    if session.get('username') :
-        session.pop('username', None)
     return redirect('/ads')
 
 
@@ -136,7 +134,12 @@ def login():
         token = user.generate_token()
         return jsonify({'token': token.decode('ascii')})
 
-
+@app.route('/logout', methods=["GET"])
+def logout():
+    response = make_response(redirect('/'))
+    response.delete_cookie('token')
+    session.pop('username')
+    return response
 
 if __name__ == '__main__':
     app.run()
