@@ -23,6 +23,8 @@ def require_login(func):
     
     return wrapper
 
+#eeiii ta ne mi vqrvate shi vi iba 
+
 
 @app.route('/')
 def home():
